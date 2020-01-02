@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzOCR", "EzOCR\EzOCR.csproj", "{13773FBE-A44C-402A-AF00-253B61D4A450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EzOCR.Tests", "EzOCR.Tests\EzOCR.Tests.csproj", "{804F057E-11AE-48DB-8058-2D0629FD2A95}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13773FBE-A44C-402A-AF00-253B61D4A450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13773FBE-A44C-402A-AF00-253B61D4A450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13773FBE-A44C-402A-AF00-253B61D4A450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13773FBE-A44C-402A-AF00-253B61D4A450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{804F057E-11AE-48DB-8058-2D0629FD2A95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{804F057E-11AE-48DB-8058-2D0629FD2A95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{804F057E-11AE-48DB-8058-2D0629FD2A95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{804F057E-11AE-48DB-8058-2D0629FD2A95}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
