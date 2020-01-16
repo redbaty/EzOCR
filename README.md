@@ -8,11 +8,9 @@ Features:
 
 # Usage
 
-Example using a bitmap as input.
+#### Example using a bitmap as input.
 
 ```
-var bitmap = new Bitmap(imageStream);
-
 var pix = PixConverter.ToPix(bitmap);
 var ocrText = await pix.GetTextAndEnsureData()
                        .CleanAndFlattenString();
@@ -20,9 +18,9 @@ var ocrText = await pix.GetTextAndEnsureData()
 
 ---
 
-Example using a stream as input.
+#### Example using a stream as input.
 
-#### Warning! This method writes to a temporary file.
+###### :warning: Warning! This method writes to a temporary file.
 
 ```
 var pix = imageStream.ConvertToPix();
