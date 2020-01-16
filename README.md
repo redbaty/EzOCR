@@ -5,6 +5,7 @@ Features:
 
 * Automatically downloads language file from tessdata.
 * Makes string OCR interface easier to use.
+* Stream to Pix converter.
 
 # Usage
 
