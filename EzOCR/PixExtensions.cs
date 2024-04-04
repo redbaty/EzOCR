@@ -53,16 +53,18 @@ namespace EzOCR
         /// <param name="dataPath">The directory holding the tesseract data.</param>
         /// <param name="language">The language to use during the OCR process.</param>
         /// <param name="disposeImage">If true, the image will be disposed after the OCR process is done.</param>
+        /// <param name="engineMode">The engine mode to use during the OCR process.</param>
         /// <returns></returns>
         public static async Task<string> GetTextAndEnsureData(this Pix pixImage,
                                                               string dataPath = "./tessdata",
                                                               string language = "eng",
-                                                              bool disposeImage = true)
+                                                              bool disposeImage = true,
+                                                              EngineMode engineMode = EngineMode.TesseractOnly)
         {
             var tessdataDownloader = new TessdataDownloader();
             await tessdataDownloader.EnsureDataFolder(language, dataFolder: dataPath);
 
-            using var engine = new TesseractEngine(dataPath, language, EngineMode.Default);
+            using var engine = new TesseractEngine(dataPath, language, engineMode);
             using var process = engine.Process(pixImage);
             var text = process.GetText();
 
@@ -78,13 +80,15 @@ namespace EzOCR
         /// <param name="dataPath">The directory holding the tesseract data.</param>
         /// <param name="language">The language to use during the OCR process.</param>
         /// <param name="disposeImage">If true, the image will be disposed after the OCR process is done.</param>
+        /// <param name="engineMode">The engine mode to use during the OCR process.</param> 
         /// <returns></returns>
         public static string GetText(this Pix pixImage,
                                      string dataPath = "./tessdata",
                                      string language = "eng",
-                                     bool disposeImage = true)
+                                     bool disposeImage = true,
+                                     EngineMode engineMode = EngineMode.TesseractOnly)
         {
-            using var engine = new TesseractEngine(dataPath, language, EngineMode.Default);
+            using var engine = new TesseractEngine(dataPath, language, engineMode);
             using var process = engine.Process(pixImage);
             var text = process.GetText();
 
