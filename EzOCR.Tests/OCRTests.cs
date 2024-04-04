@@ -9,8 +9,10 @@ namespace EzOCR.Tests
         [TestMethod]
         public async Task TestCaptcha()
         {
-            var imageOcr = await ResourceLoader.GetFileFromAssembly("*basic_captcha.jpg").ConvertToPix()
-                                               .GetTextAndEnsureData().CleanAndFlattenString();
+            var imageOcr = await ResourceLoader.GetFileFromAssembly("*basic_captcha.jpg")
+                .ConvertToPix()
+                .GetTextAndEnsureData()
+                .CleanAndFlattenString();
             
             Assert.AreEqual("m85W8I", imageOcr);
         }
