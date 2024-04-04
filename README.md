@@ -21,8 +21,6 @@ var ocrText = await pix.GetTextAndEnsureData()
 
 #### Example using a stream as input.
 
-###### :warning: Warning! This method writes to a temporary file.
-
 ```
 var pix = imageStream.ConvertToPix();
 var ocrText = await pix.GetTextAndEnsureData()

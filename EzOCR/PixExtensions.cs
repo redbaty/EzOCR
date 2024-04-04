@@ -13,31 +13,37 @@ namespace EzOCR
         /// <returns></returns>
         public static Pix ConvertToPix(this byte[] data)
         {
-            using var temporaryFile = new TemporaryFile();
-            using var writeStream = temporaryFile.OpenWriteStream();
-            writeStream.Write(data, 0, data.Length);
-            writeStream.Close();
-
-            return Pix.LoadFromFile(temporaryFile.FullPath);
+            return Pix.LoadFromMemory(data);
         }
 
         /// <summary>
-        /// Converts stream to a Pix image by using the file on a file stream or by using a temporary file.
+        /// Converts stream to a Pix image.
         /// </summary>
         /// <param name="stream"></param>
+        /// <param name="useFile">If true, the stream will be written to a temporary file and then loaded as a Pix image.</param>
         /// <returns></returns>
-        public static Pix ConvertToPix(this Stream stream)
+        public static Pix ConvertToPix(this Stream stream, bool useFile = false)
         {
             if (stream is FileStream fileStream && File.Exists(fileStream.Name))
                 return Pix.LoadFromFile(fileStream.Name);
+            
+            if(stream is MemoryStream memoryStream)
+                return memoryStream.ToArray().ConvertToPix();
 
-            using var temporaryFile = new TemporaryFile();
-            using var writeStream = temporaryFile.OpenWriteStream();
-            stream.CopyTo(writeStream);
-            stream.Close();
-            writeStream.Close();
+            if (useFile)
+            {
+                using var temporaryFile = new TemporaryFile();
+                using var writeStream = temporaryFile.OpenWriteStream();
+                stream.CopyTo(writeStream);
+                stream.Close();
+                writeStream.Close();
 
-            return Pix.LoadFromFile(temporaryFile.FullPath);
+                return Pix.LoadFromFile(temporaryFile.FullPath);
+            }
+            
+            using var convertedStream = new MemoryStream();
+            stream.CopyTo(convertedStream);
+            return convertedStream.ToArray().ConvertToPix();
         }
 
         /// <summary>
