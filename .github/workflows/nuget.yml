@@ -3,7 +3,7 @@ name: .NET Core
 on:
   workflow_run:
     workflows: ["tests"]
-    branches: [main]
+    branches: [master]
     types: 
       - completed
 
