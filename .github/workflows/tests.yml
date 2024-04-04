@@ -16,8 +16,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install dependencies
+        run: |
+          apt update
+          apt install -y libleptonica-dev libtesseract-dev
+          mkdir -p /test/x64
+
+          ln -s /usr/lib/x86_64-linux-gnu/libdl.so.2 /usr/lib/x86_64-linux-gnu/libdl.so
+          ln -s /usr/lib/x86_64-linux-gnu/liblept.so.5 /test/x64/libleptonica-1.82.0.so
+          ln -s /usr/lib/x86_64-linux-gnu/libtesseract.so.5 /test/x64/libtesseract50.so
+
       - name: Run tests
-        run: dotnet test --configuration Release --logger "trx;LogFileName=test_results.xml"
+        run: dotnet test -o /test --configuration Release --logger "trx;LogFileName=test_results.xml"
         
       - name: Upload test results
         uses: actions/upload-artifact@v4
