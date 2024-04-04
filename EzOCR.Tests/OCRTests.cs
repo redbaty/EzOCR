@@ -12,7 +12,7 @@ namespace EzOCR.Tests
             var imageOcr = await ResourceLoader.GetFileFromAssembly("*basic_captcha.jpg").ConvertToPix()
                                                .GetTextAndEnsureData().CleanAndFlattenString();
             
-            Assert.AreEqual(imageOcr, "m85W8I");
+            Assert.AreEqual("m85W8I", imageOcr);
         }
     }
 }
