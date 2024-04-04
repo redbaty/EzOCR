@@ -1,0 +1,26 @@
+name: tests
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/README.md'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: mcr.microsoft.com/dotnet/sdk:8.0
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: dotnet test --configuration Release --logger "trx;LogFileName=test_results.xml"
+        
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: '**/test_results.xml'
