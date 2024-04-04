@@ -26,3 +26,7 @@ var pix = imageStream.ConvertToPix();
 var ocrText = await pix.GetTextAndEnsureData()
                        .CleanAndFlattenString();
 ```
+
+# Linux
+
+To run in linux you need to install some dependencies, [here's a great comment/thread exaplaining how to do it](https://github.com/charlesw/tesseract/issues/503#issuecomment-1863208371)
