@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 
-namespace EzOCR
+namespace EzOCR.Tests
 {
-    public static class StringExtensions
+    internal static class StringExtensions
     {
         public static Task<string> CleanAndFlattenString(this Task<string> baseTask) =>
                 baseTask.ContinueWith(t => t.Result.Trim(' ', '\n', '\t'));
